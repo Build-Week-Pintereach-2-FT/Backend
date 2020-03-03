@@ -1,17 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Articles = require("./articleModel");
+const Articles = require("./articalModel");
 const restricted = require("../auth/restMiddleware");
 
-// router.get("/", restricted, (req, res) => {
-//   Articles.getArticles()
-//     .then(projects => {
-//       res.status(200).json(projects);
-//     })
-//     .catch(err => {
-//       res.status(500).json({ message: "Failed to get articles" });
-//     });
-// });
 
 router.get("/categories", restricted, (req, res) => {
   Articles.getCategory()

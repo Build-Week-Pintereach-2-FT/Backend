@@ -4,7 +4,7 @@ const router = express.Router();
 const restricted = require("../auth/restMiddleware");
 const Boards = require("./boardModel");
 
-router.get("/",  (req, res) => {
+router.get("/",  (req, res) => { // /api/boards -- gets list of boards, no need to log in to get boards
   Boards.getBoards()
     .then(boards => {
       res.json(boards);
@@ -15,7 +15,7 @@ router.get("/",  (req, res) => {
 router.get("/:id", restricted, (req, res) => {
     const { id } = req.params;
   
-    Articles.findById(id)
+    Boards.findById(id)
       .then(board => {
         if (board) {
           res.json(board);
@@ -34,7 +34,7 @@ router.get("/:id", restricted, (req, res) => {
 router.post("/", restricted, (req, res) => {
   const boardData = req.body;
 
-  Articles.addArticle(boardData)
+  Boards.addBoard(boardData)
     .then(newBoard => {
       res.status(201).json(newBoard);
     })

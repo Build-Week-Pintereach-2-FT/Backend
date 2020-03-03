@@ -20,8 +20,7 @@ function generateToken(user) {
   return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
-router.post("/register", (req, res) => {
-  const user = req.body;
+router.post("/register", (req, res) => { // /api/users/register 
 
   const hash = bcrypt.hashSync(user.password, 13);
 //   const token = generateToken(user);
@@ -73,7 +72,7 @@ router.get("/logout", (req, res) => {
   if (req.session) {
     req.session.destroy(err => {
       if (err) {
-        res.json({ message: "welp, it seems like you might be stuck here." });
+        res.json({ message: "unable to logout." });
       } else {
         res.sendStatus(200).end({ message: "bye!" });
       }
@@ -81,7 +80,7 @@ router.get("/logout", (req, res) => {
   } else {
     res
       .status(200)
-      .json({ message: "were you sitting outside this whole time?" });
+      .json({ message: "This is weird.." });
   }
 });
 module.exports = router;
