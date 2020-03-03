@@ -11,6 +11,10 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
+server.use("/", (req,res,next) =>{
+    "I'm working!"
+})
+
 server.use("/api/users", userRouter);
 server.use("/api/boards", boardsRouter)
 server.use("/api/articles", articlesRouter);
