@@ -20,6 +20,7 @@ exports.up = function(knex) {
       tbl
         .integer("userId")
         .notNullable()
+        .foreignKey("userId")
         .references("users.id");
     })
     .createTable("articles", tbl => {
@@ -30,8 +31,9 @@ exports.up = function(knex) {
       tbl.date("datePublished").notNullable();
       tbl
         .integer("boardId")
+        .foreignKey("boardId")
         .notNullable()
-        .references("board.id");
+        .references("boards.id");
     });
 };
 

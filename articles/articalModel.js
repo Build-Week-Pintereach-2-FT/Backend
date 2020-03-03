@@ -1,7 +1,7 @@
 const db = require("../data/dbConfig");
 
 module.exports = {
-//   getArticles,
+   getArticles,
   getCategory,
   deleteArticle,
   addArticle,
@@ -10,25 +10,17 @@ module.exports = {
   //getArticlesByCategory,
 };
 
-// function getArticles() {
-//   return db("articles");
-// }
-
-function getUserArticles(id) { //tested on postman
-  if (!id) {
-    return db("articles")
-    .join("users", "articles.userId", "=", "users.id")
-    .select("articles.articleName", "articles.linkToArticle","articles.categories")
-  }
-  return db("tasks")
-  .join("users", "articles.userId", "=", "users.id")
-  .select("articles.articleName", "articles.linkToArticle","articles.categories")
-    .where({ userId: id });
+function getArticles() {
+  return db("articles");
 }
 
-// function getArticlesByCategory() {
-// NEED TO GET LOGIC FOR THIS
-// }
+function getUserArticles(id) { 
+  return db("articles")
+      .where("boardId", id )
+      .first();
+}
+
+
 
 function getCategory() {//works on postman
   return db("articles")

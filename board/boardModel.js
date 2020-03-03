@@ -11,8 +11,8 @@ module.exports = {
 
 
 function findById(id) {//works on postman
-    return db("articles")
-      .where({ id })
+    return db("boards")
+      .where("userId", id )
       .first();
   }
 
@@ -20,7 +20,7 @@ function findById(id) {//works on postman
       return db("boards")
   }
 
-  function addBoard(newBoard) {// works on postman
+  function addBoard(newBoard) {
     return db("boards")
       .insert(newBoard)
       .then(ids => {

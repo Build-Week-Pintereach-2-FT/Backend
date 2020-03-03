@@ -17,7 +17,7 @@ router.get("/categories", restricted, (req, res) => {
 router.get("/:id", restricted, (req, res) => {
   const { id } = req.params;
 
-  Articles.findById(id)
+  Articles.getUserArticles()
     .then(article => {
       if (article) {
         res.json(article);
@@ -34,7 +34,7 @@ router.get("/:id", restricted, (req, res) => {
 
 router.get('/', (req, res) => {
     
-    Articles.getUserArticles()
+    Articles.getArticles()
     .then(articles => {
       res.status(200).json(articles)
     })

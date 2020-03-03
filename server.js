@@ -11,9 +11,7 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use("/", (req ,res ,next) =>{
-   res.send('<h3>Im working!<h3>') 
-})
+
 
 server.use("/api/users", userRouter);
 server.use("/api/boards", boardsRouter)
