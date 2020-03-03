@@ -1,20 +1,25 @@
 // Update with your config settings.
 require('dotenv').config()
 
-module.exports = {
-  development: {
-    client: "sqlite3",
-    connection: {
-      filename: "./data/pintereach.db3"
-    },
-    pool: {
-      afterCreate: (conn, done) => {
-        // runs after a connection is made to the sqlite engine
-        conn.run("PRAGMA foreign_keys = ON", done); // turn on FK enforcement
-      }
-    }
-  },
 
+  module.exports = {
+    development: {
+      client: "sqlite3",
+      useNullAsDefault: true,
+      connection: {
+        filename: "./data/pintereach2bw4"
+      },
+      migrations: {
+        tableName: "knex_migrations"
+      },
+      migrations: {
+        directory: "./migrations"
+      },
+      seeds: {
+        directory: "./seeds"
+      }
+    
+    },
   // staging: {
   //   client: 'pg',
   //   connection: {
