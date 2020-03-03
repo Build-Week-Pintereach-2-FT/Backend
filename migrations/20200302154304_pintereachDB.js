@@ -20,18 +20,16 @@ exports.up = function(knex) {
       tbl
         .integer("userId")
         .notNullable()
-        .foreignKey("userId")
         .references("users.id");
     })
     .createTable("articles", tbl => {
       tbl.increments();
       tbl.string("articleName").notNullable();
-      tbl.string("linkToArticle").notNullable();
+      tbl.text("linkToArticle").notNullable();
       tbl.string("categories").notNullable();
-      tbl.date("datePublished").notNullable();
+      tbl.string("datePublished").notNullable();
       tbl
         .integer("boardId")
-        .foreignKey("boardId")
         .notNullable()
         .references("boards.id");
     });

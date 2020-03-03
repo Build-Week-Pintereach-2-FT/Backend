@@ -4,7 +4,7 @@ const helmet = require("helmet");
 
 const userRouter = require("./users/users-router");
 const boardsRouter = require("./board/boardRouter")
-const articlesRouter = require("./articles/articalRouter");
+const articlesRouter = require("./articles/articleRouter");
 const server = express();
 
 server.use(helmet());

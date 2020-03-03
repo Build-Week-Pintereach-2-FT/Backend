@@ -12,6 +12,14 @@ router.get("/",  (req, res) => { // /api/boards -- gets list of boards, no need 
     .catch(err => res.send(err));
 });
 
+router.get("/userboards/:id", restricted, (req, res) => { // /api/boards -- gets list of boards, no need to log in to get boards
+  Boards.getUsersBoards()
+    .then(boards => {
+      res.json(boards);
+    })
+    .catch(err => res.send(err));
+});
+
 router.get("/:id", restricted, (req, res) => {
     const { id } = req.params;
   

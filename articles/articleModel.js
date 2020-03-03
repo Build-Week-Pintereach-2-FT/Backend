@@ -1,12 +1,12 @@
 const db = require("../data/dbConfig");
 
 module.exports = {
-   getArticles,
+  getArticles,
   getCategory,
   deleteArticle,
   addArticle,
   findById,
-  getUserArticles,
+  getUserArticles
   //getArticlesByCategory,
 };
 
@@ -14,26 +14,26 @@ function getArticles() {
   return db("articles");
 }
 
-function getUserArticles(id) { 
+function getUserArticles(id) {
   return db("articles")
-      .where("boardId", id )
-      .first();
-}
-
-
-
-function getCategory() {//works on postman
-  return db("articles")
-  .select("categories")
-}
-
-function findById(id) {//works on postman
-  return db("articles")
-    .where({ id })
+    .where("boardId", id)
     .first();
 }
 
-function addArticle(newArticle) {// works on postman
+function getCategory() {
+  //works on postman
+  return db("articles").select("categories");
+}
+
+function findById(id) {
+  //works on postman
+  return db("articles")
+    .where("boardId", id)
+    .first();
+}
+
+function addArticle(newArticle) {
+  // works on postman
   return db("articles")
     .insert(newArticle)
     .then(ids => {
@@ -41,9 +41,8 @@ function addArticle(newArticle) {// works on postman
     });
 }
 
-
 function deleteArticle(article) {
-  return db("article")
+  return db("articles")
     .where("id", id)
     .del(article);
 }

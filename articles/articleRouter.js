@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Articles = require("./articalModel");
+const Articles = require("./articleModel");
 const restricted = require("../auth/restMiddleware");
 
 
