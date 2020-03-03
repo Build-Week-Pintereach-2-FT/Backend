@@ -29,9 +29,9 @@ exports.up = function(knex) {
       tbl.string("categories").notNullable();
       tbl.date("datePublished").notNullable();
       tbl
-        .integer("userId")
+        .integer("boardId")
         .notNullable()
-        .references("users.id");
+        .references("board.id");
     });
 };
 
