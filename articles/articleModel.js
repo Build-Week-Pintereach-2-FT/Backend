@@ -28,16 +28,17 @@ function getCategory() {
 
 function findById(id) {
   //works on postman
-  return db("articles").where("boardId", id);
+  return db("articles")
+    .where("boardId", id)
 }
 
 function addArticle(newArticle) {
   return db("articles")
     .insert(newArticle)
-    .returning("*");
-  // .then(ids => {
-  //   return findById(ids[0]);
-  // });
+    .returning("*")
+    // .then(ids => {
+    //   return findById(ids[0]);
+    // });
 }
 
 function deleteArticle(id) {
@@ -47,8 +48,8 @@ function deleteArticle(id) {
 }
 
 function updateArticle(id, changes) {
-  return db("posts")
+  return db('posts')
     .where({ id })
     .update(changes)
-    .returning("*");
 }
+
