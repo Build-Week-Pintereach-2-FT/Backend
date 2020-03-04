@@ -47,7 +47,7 @@ router.post("/", restricted, (req, res) => {
       res.status(201).json(newBoard);
     })
     .catch(err => {
-      res.status(500).json({ message: "Failed to create new board" });
+      res.status(500).json(error.message);
     });
 });
 
