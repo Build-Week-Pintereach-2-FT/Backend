@@ -28,9 +28,10 @@ function getUsersBoards(id) {
 function addBoard(newBoard) {
   return db("boards")
     .insert(newBoard)
-    .then(ids => {
-      return findById(ids[0]);
-    });
+    .returning("*")
+    // .then(ids => {
+    //   return findById(ids[0]);
+    // });
 }
 
 function editBoard(board) {
@@ -40,5 +41,5 @@ function editBoard(board) {
 function deleteBoard(id) {
   return db("boards")
     .where("id", id)
-    .del(id);
+    .del();
 }
