@@ -40,8 +40,8 @@ function addArticle(newArticle) {
     });
 }
 
-function deleteArticle(article) {
+function deleteArticle(id) {
   return db("articles")
     .where("id", id)
-    .del(article);
+    .del();
 }
