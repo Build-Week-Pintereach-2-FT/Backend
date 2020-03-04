@@ -68,9 +68,23 @@ router.delete("/:id", restricted, (req, res) => {
         res.status(500).json({ message: "Failed to delete board" });
       });
   });
+
+  
   
 
-
+  router.put("/:id", (req, res) => {
+    const { id } = req.params;
+    const { body } = req;
+    Boards
+      .editBoard(id, body)
+      .then(updatega => {
+        console.log("Update Spell Critical Hit!!! It was Super Effective!");
+        res.status(200).json(updatega);
+      })
+      .catch(err => {
+        status(404).json(error.message);
+      });
+  });
 
 
 module.exports = router;

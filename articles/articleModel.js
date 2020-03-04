@@ -6,7 +6,8 @@ module.exports = {
   deleteArticle,
   addArticle,
   findById,
-  getUserArticles
+  getUserArticles,
+  updateArticle
   //getArticlesByCategory,
 };
 
@@ -46,3 +47,10 @@ function deleteArticle(id) {
     .where("id", id)
     .del();
 }
+
+function updateArticle(id, changes) {
+  return db('posts')
+    .where({ id })
+    .update(changes);
+}
+

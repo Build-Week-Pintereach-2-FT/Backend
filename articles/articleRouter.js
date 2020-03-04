@@ -74,6 +74,23 @@ router.delete("/:id", restricted, (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const { body } = req;
+  Articles
+    .updateArticle(id, body)
+    .then(updatega => {
+      console.log("Update Spell Critical Hit!!! It was Super Effective!");
+      res.status(200).json(updatega);
+    })
+    .catch(err => {
+      status(404).json({ message: "Booooooop? " });
+    });
+});
+
+
+
+
 module.exports = router;
 
 

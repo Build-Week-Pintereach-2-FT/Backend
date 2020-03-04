@@ -34,8 +34,11 @@ function addBoard(newBoard) {
     // });
 }
 
-function editBoard(board) {
-  return db("boards");
+
+function editBoard(id, changes) {
+  return db('boards')
+    .where({ id })
+    .update(changes);
 }
 
 function deleteBoard(id) {
