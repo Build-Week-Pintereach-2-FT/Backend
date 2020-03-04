@@ -70,7 +70,7 @@ router.delete("/:id", restricted, (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).json({ message: "Failed to delete article" });
+      res.status(500).json(err.message);
     });
 });
 
