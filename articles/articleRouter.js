@@ -51,7 +51,7 @@ router.post("/", restricted, (req, res) => {
       res.status(201).json(newArticle);
     })
     .catch(err => {
-      res.status(500).json({ message: "Failed to create new article" });
+      res.status(500).json(err.message);
     });
 });
 
