@@ -53,7 +53,7 @@ router.post("/", restricted, (req, res) => {
 
 router.delete("/:id", restricted, (req, res) => {
     const { id } = req.params;
-  
+  console.log(req.decodedToken)
     Boards.deleteBoard(id)
       .then(deleted => {
         if (deleted) {
