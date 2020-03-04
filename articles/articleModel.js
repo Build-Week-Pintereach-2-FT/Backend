@@ -35,9 +35,10 @@ function addArticle(newArticle) {
   // works on postman
   return db("articles")
     .insert(newArticle)
-    .then(ids => {
-      return findById(ids[0]);
-    });
+    .returning("*")
+    // .then(ids => {
+    //   return findById(ids[0]);
+    // });
 }
 
 function deleteArticle(id) {
