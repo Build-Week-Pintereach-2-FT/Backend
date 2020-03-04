@@ -29,7 +29,6 @@ function findById(id) {
   //works on postman
   return db("articles")
     .where("boardId", id)
-    .first();
 }
 
 function addArticle(newArticle) {
