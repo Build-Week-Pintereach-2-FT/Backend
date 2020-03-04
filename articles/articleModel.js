@@ -28,7 +28,7 @@ function getCategory() {
 
 function findById(id) {
   //works on postman
-  return db("articles").where(id);
+  return db("articles").where("id", id);
 }
 
 function addArticle(newArticle) {
