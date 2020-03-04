@@ -21,24 +21,23 @@ function getBoards() {
 }
 
 function getUsersBoards(id) {
-    return db("boards")
-    .where("userId", id)
+  return db("boards").where("userId", id);
 }
 
 function addBoard(newBoard) {
   return db("boards")
     .insert(newBoard)
-    .returning("*")
-    // .then(ids => {
-    //   return findById(ids[0]);
-    // });
+    .returning("*");
+  // .then(ids => {
+  //   return findById(ids[0]);
+  // });
 }
 
-
 function editBoard(id, changes) {
-  return db('boards')
+  return db("boards")
     .where({ id })
-    .update(changes);
+    .update(changes)
+    .returning("*");
 }
 
 function deleteBoard(id) {
