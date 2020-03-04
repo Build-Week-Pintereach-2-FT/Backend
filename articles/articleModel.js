@@ -47,7 +47,7 @@ function deleteArticle(id) {
 }
 
 function updateArticle(id, changes) {
-  return db("posts")
+  return db("articles")
     .where({ id })
     .update(changes)
     .returning("*");
