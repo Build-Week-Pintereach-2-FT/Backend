@@ -37,8 +37,8 @@ function editBoard(board) {
   return db("boards");
 }
 
-function deleteBoard() {
+function deleteBoard(id) {
   return db("boards")
     .where("id", id)
-    .del();
+    .del(id);
 }
