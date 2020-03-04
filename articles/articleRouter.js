@@ -24,6 +24,24 @@ router.get("/:id", restricted, (req, res) => {
       } else {
         res
           .status(404)
+          .json({ message: "Could not find article with given boardid." });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Failed to get articles" });
+    });
+});
+
+router.get("/art/:id", restricted, (req, res) => {
+  const { id } = req.params;
+
+  Articles.findById()
+    .then(article => {
+      if (article) {
+        res.json(article);
+      } else {
+        res
+          .status(404)
           .json({ message: "Could not find article with given id." });
       }
     })

@@ -23,6 +23,24 @@ router.get("/userboards/:id", restricted, (req, res) => { // /api/boards -- gets
 router.get("/:id", restricted, (req, res) => {
     const { id } = req.params;
   
+    Boards.getUsersBoards(id)
+      .then(board => {
+        if (board) {
+          res.json(board);
+        } else {
+          res
+            .status(404)
+            .json({ message: "Could not find board with given id." });
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: "Failed to get board" });
+      });
+  });
+
+  router.get("/brd/:id", restricted, (req, res) => {
+    const { id } = req.params;
+  
     Boards.findById(id)
       .then(board => {
         if (board) {
@@ -37,6 +55,8 @@ router.get("/:id", restricted, (req, res) => {
         res.status(500).json({ message: "Failed to get board" });
       });
   });
+
+
 
 
 router.post("/", restricted, (req, res) => {
