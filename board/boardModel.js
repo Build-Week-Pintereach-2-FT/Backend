@@ -12,7 +12,7 @@ module.exports = {
 function findById(id) {
   //works on postman
   return db("boards")
-    .where("userId", id)
+    .where(id)
     .first();
 }
 
