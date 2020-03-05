@@ -59,7 +59,7 @@ router.get("/:id", restricted, (req, res) => {
 
 
 
-router.post("/", restricted, (req, res) => {
+router.post("/", /*restricted,*/ (req, res) => {
   const boardData = req.body;
 
   Boards.addBoard(boardData)

@@ -1,24 +1,29 @@
 // Update with your config settings.
-require('dotenv').config()
+// require("dotenv").config();
 
-
-  module.exports = {
-    development: {
+module.exports = {
+  development: {
+    client: "sqlite3",
+    useNullAsDefault: true,
+    connection: {
+      filename: "./data/pintereachDB.db3"
+    },
+    migrations: {
+      tableName: "knex_migrations"
+    },
+    migrations: {
+      directory: "./migrations"
+    },
+    seeds: {
+      directory: "./seeds"
+    },
+   
+  },
+   testing: {
       client: "sqlite3",
-      useNullAsDefault: true,
-      connection: {
-        filename: "./data/pintereach2bw4"
-      },
-      migrations: {
-        tableName: "knex_migrations"
-      },
-      migrations: {
-        directory: "./migrations"
-      },
-      seeds: {
-        directory: "./seeds"
+      connections: {
+        filename: "./data/test.db3"
       }
-    
     },
   // staging: {
   //   client: 'pg',
